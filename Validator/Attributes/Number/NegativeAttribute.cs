@@ -29,7 +29,7 @@
         /// </summary>
         /// <param name="message">エラーメッセージ。</param>
         public NegativeAttribute(
-            string message)
+            string? message = null)
         {
             Message = message ?? $"負の値を設定してください。";
         }

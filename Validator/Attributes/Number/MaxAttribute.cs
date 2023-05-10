@@ -40,7 +40,7 @@
         /// <param name="message">エラーメッセージ。</param>
         public MaxAttribute(
             T max,
-            string message)
+            string? message = null)
         {
             Max = max;
             Message = message ?? $"{Max}までの数値を設定してください。";

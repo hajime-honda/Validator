@@ -40,7 +40,7 @@
         /// <param name="message">エラーメッセージ。</param>
         public MinAttribute(
             T min,
-            string message)
+            string? message = null)
         {
             Min = min;
             Message = message ?? $"{Min}を満たす数値を設定してください。";
@@ -60,7 +60,7 @@
 
             if (instance is T target)
             {
-                return target.CompareTo(this.Min) > 1;
+                return target.CompareTo(this.Min) >= 0;
             }
 
             throw new NotSupportedException($"{nameof(instance)} は {nameof(T)}型で指定してください。");

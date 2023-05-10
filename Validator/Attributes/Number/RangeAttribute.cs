@@ -53,7 +53,7 @@
         public RangeAttribute(
             T min,
             T max,
-            string message)
+            string? message = null)
         {
             Max = max;
             Min = min;

@@ -3,9 +3,8 @@
     /// <summary>
     /// 数値が整数値であるかを検証する属性クラスです。
     /// </summary>
-    /// <typeparam name="T">数値型。</typeparam>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
-    public sealed class IntegerAttribute<T> : Attribute, IValidatorAttribute where T : struct, IComparable
+    public sealed class IntegerAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
         /// バリデーターの名前を取得します。
@@ -25,11 +24,11 @@
         }
 
         /// <summary>
-        /// <see cref="IntegerAttribute{T}" /> の新しいインスタンスを生成します。
+        /// <see cref="IntegerAttribute" /> の新しいインスタンスを生成します。
         /// </summary>
         /// <param name="message">エラーメッセージ。</param>
         public IntegerAttribute(
-            string message)
+            string? message = null)
         {
             Message = message ?? $"整数値を設定してください。";
         }
@@ -46,12 +45,7 @@
                 return true;
             }
 
-            if (instance is T target)
-            {
-                return int.TryParse(target.ToString(), out _);
-            }
-
-            throw new NotSupportedException($"{nameof(instance)} は {nameof(T)}型で指定してください。");
+            return instance is int;
         }
     }
 }

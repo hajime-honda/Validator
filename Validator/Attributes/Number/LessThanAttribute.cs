@@ -40,7 +40,7 @@
         /// <param name="message">エラーメッセージ。</param>
         public LessThanAttribute(
             T value, 
-            string message)
+            string? message = null)
         {
             Value = value;
             Message = message ?? $"{Value} より小さい値を設定してください。";
