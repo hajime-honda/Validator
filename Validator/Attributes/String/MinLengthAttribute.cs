@@ -41,7 +41,7 @@
         /// <param name="message">検証メッセージ。</param>
         public MinLengthAttribute(
             uint length,
-            string message)
+            string message = "")
         {
             Length = length;
             Message = message ?? $"最小文字数({Length}文字)に達していません。";

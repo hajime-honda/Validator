@@ -39,7 +39,7 @@
         /// <param name="message">検証メッセージ。</param>
         public MaxLengthAttribute(
             uint length,
-            string message)
+            string message = "")
         {
             Length = length;
             Message = message ?? $"最大文字数({Length}文字)を超えています。";

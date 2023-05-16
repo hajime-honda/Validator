@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Attributes\String\" />
     <Folder Include="Utility\Models\" />
   </ItemGroup>
 

@@ -126,4 +126,34 @@ namespace Validator.Testing.Attributes.Number
             set;
         } = -9;
     }
+
+    public class Model13
+    {
+        [Range<int>(min: 0, max: 10)]
+        public int SomethingNumber
+        {
+            get;
+            set;
+        } = 5;
+    }
+
+    public class Model14
+    {
+        [Range<int>(min: 0, max: 10)]
+        public int SomethingNumber
+        {
+            get;
+            set;
+        } = -1;
+    }
+
+    public class Model15
+    {
+        [Range<int>(min: 0, max: 10)]
+        public int SomethingNumber
+        {
+            get;
+            set;
+        } = 11;
+    }
 }
