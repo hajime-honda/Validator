@@ -7,14 +7,6 @@
     public sealed class DateTimeRangeAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "DateTimeRange";
-
-        /// <summary>
         /// 開始日時を取得します。
         /// </summary>
         public DateTime? Start

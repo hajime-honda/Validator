@@ -9,14 +9,6 @@
     public sealed class MinLengthAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "ArrayMinLength";
-
-        /// <summary>
         /// 確認する長さを取得します。
         /// </summary>
         public uint Min

@@ -7,14 +7,6 @@
     public class RegexAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "StringRegex";
-
-        /// <summary>
         /// 正規表現を取得します。
         /// </summary>
         public string Pattern

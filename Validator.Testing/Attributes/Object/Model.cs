@@ -1,4 +1,5 @@
 ﻿using Validator.Attributes.Object;
+using Validator.Models;
 
 namespace Validator.Testing.Attributes.Object
 {
@@ -31,5 +32,36 @@ namespace Validator.Testing.Attributes.Object
             get;
             set;
         } = new List<string>();
+    }
+
+    internal class Models2 : ICustomValidator
+    {
+        [Required]
+        public string Name
+        {
+            get;
+            set;
+        } = "taro";
+
+        public int Age
+        {
+            get;
+            set;
+        } = 15;
+
+        public IEnumerable<Error> Validate()
+        {
+            var errors = new List<Error>();
+
+            if (this.Name != "taro")
+            {
+                if (this.Age < 0 || this.Age >= 150)
+                {
+                    errors.Add(new Error(name: "Models2", message: "年齢は0から150才までに設定してください。"));
+                }
+            }
+
+            return errors;
+        }
     }
 }

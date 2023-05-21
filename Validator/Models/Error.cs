@@ -26,24 +26,14 @@
         }
 
         /// <summary>
-        /// バリデーションの種類名を取得します。
-        /// </summary>
-        public string Type
-        {
-            get;
-        }
-
-        /// <summary>
         /// <see cref="Error"/> の新しいインスタンスを生成します。
         /// </summary>
         /// <param name="name">検証したプロパティ名。</param>
         /// <param name="message">メッセージ。</param>
-        /// <param name="type">バリデーションの種類名。</param>
-        public Error(string name, string message, string type)
+        public Error(string name, string message)
         {
             Name = name;
             Message = message;
-            Type = type;
         }
     }
 }

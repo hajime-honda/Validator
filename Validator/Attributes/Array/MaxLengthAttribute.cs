@@ -9,14 +9,6 @@
     public sealed class MaxLengthAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "ArrayMaxLength";
-
-        /// <summary>
         /// 確認する最大数を取得します。
         /// </summary>
         public uint Max

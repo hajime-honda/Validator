@@ -9,14 +9,6 @@
     public sealed class LengthAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "ArrayLength";
-
-        /// <summary>
         /// 確認する長さを取得します。
         /// </summary>
         public uint Length

@@ -13,7 +13,7 @@ namespace Validator.Testing.Attributes.Number
         {
             Model3 target = new();
 
-            var errors = target.Validate(false);
+            var errors = target.Validate();
 
             var count = errors.Count();
 
@@ -25,7 +25,7 @@ namespace Validator.Testing.Attributes.Number
         {
             Model4 target = new();
 
-            var errors = target.Validate(false);
+            var errors = target.Validate();
 
             var count = errors.Count();
 

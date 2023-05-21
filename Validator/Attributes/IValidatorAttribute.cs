@@ -6,14 +6,6 @@
     public interface IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を表します。
-        /// </summary>
-        string Name
-        {
-            get;
-        }
-
-        /// <summary>
         /// 検証結果のメッセージを表します。
         /// </summary>
         string Message

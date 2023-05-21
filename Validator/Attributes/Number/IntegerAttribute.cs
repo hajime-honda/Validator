@@ -7,14 +7,6 @@
     public sealed class IntegerAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "NumberInteger";
-
-        /// <summary>
         /// 検証結果のメッセージを取得します。
         /// </summary>
         public string Message

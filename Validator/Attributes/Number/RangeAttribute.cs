@@ -10,14 +10,6 @@
     public sealed class RangeAttribute<T> : Attribute, IValidatorAttribute where T : struct, IComparable
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "NumberRange";
-
-        /// <summary>
         /// 最小値を取得します。
         /// </summary>
         public T Min

@@ -8,14 +8,6 @@
     public sealed class MaxAttribute<T> : Attribute, IValidatorAttribute where T : struct, IComparable
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "NumberMax";
-
-        /// <summary>
         /// 最大値を取得します。
         /// </summary>
         public T Max

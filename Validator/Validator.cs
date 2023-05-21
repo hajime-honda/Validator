@@ -3,8 +3,7 @@
     using Extensions;
     using global::Validator.Attributes;
     using Models;
-    using System.Dynamic;
-    using System.Xml;
+    using System.Reflection;
 
     /// <summary>
     /// 検証を行うクラスです。
@@ -15,30 +14,34 @@
         /// 検証します。
         /// </summary>
         /// <param name="instance">インスタンス。</param>
-        /// <param name="required">必須であるか。</param>
-        /// <param name="requiredMessage">必須時のメッセージ。</param>
         /// <typeparam name="TModel">対象となるモデルクラス。</typeparam>
         /// <returns>検証結果。</returns>
-        public static IEnumerable<Error> Validate<TModel>(
-            TModel instance,
-            bool required = false,
-            string requiredMessage = "この値は必須です")
+        public static IEnumerable<Error> Validate<TModel>(TModel instance)
         {
-            if (instance is null)
+            var errors = new List<Error>();
+
+            ValidateOfProperties(instance, ref errors);
+
+            ValidateOfField(instance, ref errors);
+
+            if (instance is ICustomValidator customValidator)
             {
-                if (required)
+                foreach (var error in customValidator.Validate())
                 {
-                    yield return new Error(
-                        name: nameof(TModel),
-                        message: requiredMessage,
-                        type: "required");
-                }
-                else
-                {
-                    yield break;
+                    errors.Add(error);
                 }
             }
 
+            return errors;
+        }
+
+        /// <summary>
+        /// プロパティに付与されている属性を呼び出します。
+        /// </summary>
+        /// <param name="instance">インスタンス。</param>
+        /// <param name="errors">エラーオブジェクト。</param>
+        private static void ValidateOfProperties(object instance, ref List<Error> errors)
+        {
             foreach (var property in instance.GetProperties())
             {
                 foreach (var attribute in property.GetCustomAttributes(true))
@@ -47,15 +50,22 @@
                     {
                         if (!validator.Validate(property.GetValue(instance)))
                         {
-                            yield return new Error(
+                            errors.Add(new Error(
                                 name: property.Name,
-                                message: validator.Message,
-                                type: validator.Name);
+                                message: validator.Message));
                         }
                     }
                 }
             }
+        }
 
+        /// <summary>
+        /// フィールドに付与されている属性を呼び出します。
+        /// </summary>
+        /// <param name="instance">インスタンス。</param>
+        /// <param name="errors">エラーオブジェクト。</param>
+        private static void ValidateOfField(object instance, ref List<Error> errors)
+        {
             foreach (var field in instance.GetFields())
             {
                 foreach (var attribute in field.GetCustomAttributes(true))
@@ -64,10 +74,9 @@
                     {
                         if (!validator.Validate(field.GetValue(instance)))
                         {
-                            yield return new Error(
+                            errors.Add(new Error(
                                 name: field.Name,
-                                message: validator.Message,
-                                type: validator.Name);
+                                message: validator.Message));
                         }
                     }
                 }

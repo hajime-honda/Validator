@@ -7,14 +7,6 @@
     public sealed class EmailAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "StringEmail";
-
-        /// <summary>
         /// 検証結果のメッセージを取得します。
         /// </summary>
         public string Message

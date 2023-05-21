@@ -8,14 +8,6 @@
     public sealed class MinAttribute<T> : Attribute, IValidatorAttribute where T : struct, IComparable
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "NumberMin";
-
-        /// <summary>
         /// 最小値を取得します。
         /// </summary>
         public T Min

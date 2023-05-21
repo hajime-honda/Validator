@@ -8,14 +8,6 @@
     public sealed class NegativeAttribute<T> : Attribute, IValidatorAttribute where T : struct, IComparable
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "NumberNegative";
-
-        /// <summary>
         /// 検証結果のメッセージを取得します。
         /// </summary>
         public string Message

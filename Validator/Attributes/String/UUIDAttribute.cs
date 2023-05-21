@@ -7,14 +7,6 @@
     public class UUIDAttribute : RegexAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public new string Name
-        {
-            get;
-        } = "StringUUID";
-
-        /// <summary>
         /// <see cref="UUIDAttribute"/> の新しいインスタンスを生成します。
         /// </summary>
         /// <param name="message">エラーメッセージ。</param>

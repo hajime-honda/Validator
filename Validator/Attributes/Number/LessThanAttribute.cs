@@ -8,14 +8,6 @@
     public sealed class LessThanAttribute<T> : Attribute, IValidatorAttribute where T : struct, IComparable
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "NumberLessThan";
-
-        /// <summary>
         /// 値を取得します。
         /// </summary>
         public T Value

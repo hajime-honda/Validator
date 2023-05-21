@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Validator\Validator.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Utility\Models\" />
-  </ItemGroup>
-
 </Project>

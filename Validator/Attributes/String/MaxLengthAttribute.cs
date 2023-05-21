@@ -7,14 +7,6 @@
     public sealed class MaxLengthAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "StringMaxLength";
-
-        /// <summary>
         /// 確認する長さの値を取得します。
         /// </summary>
         public uint Length

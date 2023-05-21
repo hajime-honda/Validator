@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Validator.Extensions;
+﻿using Validator.Extensions;
 
 namespace Validator.Testing.Attributes.Date
 {
@@ -18,7 +13,7 @@ namespace Validator.Testing.Attributes.Date
         {
             Model6 target = new();
 
-            var errors = target.Validate(false);
+            var errors = target.Validate();
 
             var count = errors.Count();
 
@@ -30,7 +25,7 @@ namespace Validator.Testing.Attributes.Date
         {
             Model7 target = new();
 
-            var errors = target.Validate(false);
+            var errors = target.Validate();
 
             var count = errors.Count();
 

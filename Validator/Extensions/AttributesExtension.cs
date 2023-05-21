@@ -1,6 +1,5 @@
 ﻿namespace Validator.Extensions
 {
-    using global::Validator.Attributes;
     using System.Reflection;
 
     /// <summary>
@@ -31,16 +30,6 @@
         }
 
         /// <summary>
-        /// <see cref="PropertyInfo"/>から<see cref="IValidatorAttribute"/>を実装した属性クラスを取得します。
-        /// </summary>
-        /// <param name="propertyInfo"><see cref="PropertyInfo"/>。</param>
-        /// <returns><see cref="Attribute"/>配列。</returns>
-        public static object[] GetValidatorAttributes<TModel>(this PropertyInfo propertyInfo)
-        {
-            return propertyInfo.GetType().GetCustomAttributes(typeof(IValidatorAttribute), false);
-        }
-
-        /// <summary>
         /// Null許容型であるかを確認します。
         /// </summary>
         /// <param name="type"><see cref="Type"/>。</param>
@@ -66,37 +55,6 @@
         }
 
         /// <summary>
-        /// Null許容型に変換します。
-        /// </summary>
-        /// <typeparam name="T">型。</typeparam>
-        /// <param name="instance">インスタンス。</param>
-        /// <returns>Null許容型。</returns>
-        public static T? ToNullable<T>(this object instance)
-        {
-            if (instance == null)
-            {
-                return default;
-            }
-
-            return typeof(T) == instance.GetType() 
-                ? (T)instance 
-                : (T)Convert.ChangeType(instance, typeof(T));
-        }
-
-
-        /// <summary>
-        /// Null許容型でnullの場合はデフォルト値を、そうではない場合値を取得します。
-        /// </summary>
-        /// <typeparam name="T">型。</typeparam>
-        /// <param name="instance">インスタンス。</param>
-        /// <param name="defaultValue">デフォルト値。</param>
-        /// <returns>nullまたは値。</returns>
-        public static T GetValueOrDefault<T>(this T? instance, T defaultValue = default) where T : struct
-        {
-            return instance ?? defaultValue;
-        }
-
-        /// <summary>
         /// 範囲内であるか確認します。
         /// </summary>
         /// <typeparam name="T">整数型。</typeparam>
@@ -112,23 +70,6 @@
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// パスからオブジェクトの値を取得します。
-        /// </summary>
-        /// <param name="instance">インスタンス。</param>
-        /// <param name="path">パス。</param>
-        /// <returns>値。</returns>
-        public static object GetPropertyValueByPath(this object instance, string path)
-        {
-            return
-                ($"${instance.GetType().Name}.{path}").Split('.')
-                    .Aggregate(
-                        instance,
-                        (current, property) =>
-                            current?.GetType()
-                                    .GetProperty(property)?.GetValue(current));
         }
     }
 }

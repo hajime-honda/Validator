@@ -1,6 +1,5 @@
-﻿using NuGet.Frameworks;
-using Validator.Extensions;
-using Validator.Models;
+﻿using Validator.Extensions;
+using Validator.Testing.Attributes.Array.Models.Models;
 
 namespace Validator.Testing.Attributes.Array
 {
@@ -13,9 +12,9 @@ namespace Validator.Testing.Attributes.Array
         [TestMethod]
         public void 配列数が満たす場合()
         {
-            Model target = new();
+            Models9 target = new();
 
-            var errors = GetErros(target.Validate(false));
+            var errors = target.Validate();
 
             var count = errors.Count();
 
@@ -25,9 +24,9 @@ namespace Validator.Testing.Attributes.Array
         [TestMethod]
         public void 配列数が満たされない場合()
         {
-            Model2 target = new();
+            Models10 target = new();
 
-            var errors = GetErros(target.Validate(false));
+            var errors = target.Validate();
 
             var count = errors.Count();
 
@@ -37,9 +36,9 @@ namespace Validator.Testing.Attributes.Array
         [TestMethod]
         public void 配列プロパティはnullの場合()
         {
-            Model3 target = new();
+            Models11 target = new();
 
-            var errors = GetErros(target.Validate(false));
+            var errors = target.Validate();
 
             var count = errors.Count();
 
@@ -49,11 +48,11 @@ namespace Validator.Testing.Attributes.Array
         [TestMethod]
         public void 属性を付け間違っている場合()
         {
-            Model4 target = new();
+            Models12 target = new();
 
             try
             {
-                var errors = GetErros(target.Validate(false));
+                var errors = target.Validate();
             }
             catch (NotSupportedException ex) 
             {
@@ -61,11 +60,6 @@ namespace Validator.Testing.Attributes.Array
             }
 
             Assert.Fail();
-        }
-
-        private IEnumerable<Error> GetErros(IEnumerable<Error> errors)
-        {
-            return errors.Where(error => error.Type == "ArrayMinLength").ToArray();
         }
     }
 }

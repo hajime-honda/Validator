@@ -7,14 +7,6 @@
     public sealed class UrlAttribute : Attribute, IValidatorAttribute
     {
         /// <summary>
-        /// バリデーターの名前を取得します。
-        /// </summary>
-        public string Name
-        {
-            get;
-        } = "StringUrl";
-
-        /// <summary>
         /// Urlの種類を取得します。
         /// </summary>
         public UriKind Kind
